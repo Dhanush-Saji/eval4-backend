@@ -4,6 +4,7 @@ const cors = require("cors")
 const dotenv = require('dotenv').config()
 const {connection} = require('./config/db')
 const { userRouter } = require("./routes/user")
+const { postRouter } = require("./routes/post")
 
 const PORT = process.env.PORT
 app.use(cors())
@@ -13,6 +14,7 @@ app.get('/',(req,res)=>{
     res.send("Home page")
 })
 app.use('/users',userRouter)
+app.use('/posts',postRouter)
 
 app.listen(PORT,async()=>{
     try {
